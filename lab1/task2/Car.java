@@ -12,6 +12,8 @@ public class Car {
         this.vin = generateVIN();
     }
 
+    Car() {}
+
     Car(CarType carType, String color) {
         this.type = carType;
         this.color = color;
