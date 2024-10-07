@@ -58,4 +58,8 @@ public class Temperature {
     public String toString() {
         return temperature + " " + scale;
     }
+
+    public boolean equals(Temperature temperature) {
+        return this.getTemperatureC() == temperature.getTemperatureC();
+    }
 }

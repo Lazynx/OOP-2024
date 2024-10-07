@@ -14,8 +14,8 @@ public class Car {
 
     Car() {}
 
-    Car(CarType carType, String color) {
-        this.type = carType;
+    Car(CarType type, String color) {
+        this.type = type;
         this.color = color;
         totalCarsProduced++;
     }

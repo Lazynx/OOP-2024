@@ -16,16 +16,18 @@ public class DragonLaunch {
     }
 
     public boolean willDragonEatOrNot() {
-        int kidnapped = 0;
+        int k = 0;
         for (int i = 0; i < persons.size(); i++) {
-            if (kidnapped > 0 && persons.get(kidnapped - 1).getGender() == Gender.B && persons.get(i).getGender() == Gender.G) {
-                kidnapped--;
+            if (persons.get(i).getGender() == Gender.B) {
+                k++;
             } else {
-                persons.set(kidnapped, persons.get(i));
-                kidnapped++;
+                k--;
+            }
+            if (k < 0) {
+                return true;
             }
         }
-        return kidnapped > 0;
+        return k!=0;
     }
 
     public String toString() {

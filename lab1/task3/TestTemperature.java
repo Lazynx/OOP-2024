@@ -11,7 +11,7 @@ public class TestTemperature {
         System.out.println(temp1.getScale());
 
         // Test 2
-        Temperature temp2 = new Temperature(32, 'C');
+        Temperature temp2 = new Temperature(5, 'F');
         System.out.println("TEST 2");
         System.out.println(temp2.getTemperatureC());
         System.out.println(temp2.getTemperatureF());
@@ -36,6 +36,7 @@ public class TestTemperature {
         Temperature temp5 = new Temperature('C');
         temp5.setTemperatureScale(5, 'F');
 
+        System.out.println(temp5.equals(temp2));
         System.out.println("TEST 5");
         System.out.println(temp5.getTemperatureC());
         System.out.println(temp5.getTemperatureF());
