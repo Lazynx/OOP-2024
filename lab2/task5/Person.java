@@ -8,13 +8,13 @@ public abstract class Person {
     private String name;
     private int age;
     private List<Animal> pets;
-    private List<Animal> temporaryPets;
+    private List<Animal> petsForKeeping;
 
     public Person(String name, int age) {
         this.name = name;
         this.age = age;
         this.pets = new ArrayList<>();
-        this.temporaryPets = new ArrayList<>();
+        this.petsForKeeping = new ArrayList<>();
     }
 
     public Person(String name, int age, Animal pet) {
@@ -44,30 +44,30 @@ public abstract class Person {
         return this.name;
     }
 
-    public void leavePetsWith(Person caretaker) {
+    public void leavePetsWith(Person petTaker) {
         if (this.pets.isEmpty()) {
-            System.out.println(this.name + " does not have any pets.");
+            System.out.println(this.name + " has no pets for leaving.");
             return;
         }
         for (Animal pet : this.pets) {
-            if (caretaker instanceof PhDStudent && pet instanceof Dog) {
+            if (petTaker instanceof PhDStudent && pet instanceof Dog) {
                 System.out.println("PhD students can’t have high-maintenance pets like dogs.");
                 continue;
             }
-            caretaker.temporaryPets.add(pet);
+            petTaker.petsForKeeping.add(pet);
         }
         this.pets.clear();
-        System.out.println(this.name + " has left their pets with " + caretaker.getName() + ".");
+        System.out.println(this.name + " has left their pets with " + petTaker.getName() + ".");
     }
 
-    public void retrievePetsFrom(Person caretaker) {
-        if (caretaker.temporaryPets.isEmpty()) {
-            System.out.println(caretaker.getName() + " does not have any pets to return.");
+    public void retrievePetsFrom(Person petTaker) {
+        if (petTaker.petsForKeeping.isEmpty()) {
+            System.out.println(petTaker.getName() + " has no pets for retrieving.");
             return;
         }
-        this.pets.addAll(caretaker.temporaryPets);
-        caretaker.temporaryPets.clear();
-        System.out.println(this.name + " has retrieved their pets from " + caretaker.getName() + ".");
+        this.pets.addAll(petTaker.petsForKeeping);
+        petTaker.petsForKeeping.clear();
+        System.out.println(this.name + " has retrieved their pets from " + petTaker.getName() + ".");
     }
 
     @Override
@@ -75,7 +75,7 @@ public abstract class Person {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person that = (Person) o;
-        return age == that.age && Objects.equals(name, that.name);
+        return age == that.age && Objects.equals(name, that.name) && Objects.equals(pets, that.pets) && Objects.equals(petsForKeeping, that.petsForKeeping);
     }
 
     @Override
@@ -85,6 +85,6 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return "Person [Name: " + name + ", Age: " + age + ", Pets: " + (pets.isEmpty() ? "No pets" : pets) + ", Temporary Pets: " + (temporaryPets.isEmpty() ? "No temporary pets" : temporaryPets) + "]";
+        return "Person [Name: " + name + ", Age: " + age + ", Pets: " + (pets.isEmpty() ? "No pets" : pets) + ", Temporary Pets: " + (petsForKeeping.isEmpty() ? "No temporary pets" : petsForKeeping) + "]";
     }
 }

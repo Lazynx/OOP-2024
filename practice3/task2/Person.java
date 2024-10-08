@@ -1,4 +1,4 @@
-package practise3.task2;
+package practice3.task2;
 
 public class Person {
     private String name;

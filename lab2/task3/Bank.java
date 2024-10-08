@@ -32,7 +32,11 @@ public class Bank {
     }
 
     public void closeAccount(int accNumber) {
-        accounts.removeIf(account -> account.getAccountNumber() == accNumber);
+        for (Account account : accounts) {
+            if (account.getAccountNumber() == accNumber) {
+                accounts.remove(account);
+            }
+        }
     }
 
     @Override

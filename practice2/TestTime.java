@@ -1,4 +1,4 @@
-package practise2;
+package practice2;
 
 public class TestTime {
     public static void main(String[] args) {

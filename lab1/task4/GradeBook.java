@@ -1,6 +1,6 @@
 package lab1.task4;
 
-import practise2.Student;
+import practice2.Student;
 import java.util.ArrayList;
 
 public class GradeBook {

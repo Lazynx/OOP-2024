@@ -1,4 +1,4 @@
-package practise3.task1;
+package practice3.task1;
 
 public class Cat extends Animal {
     private String breed;
