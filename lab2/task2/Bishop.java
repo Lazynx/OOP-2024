@@ -1,7 +1,11 @@
 package lab2.task2;
 
 public class Bishop extends Piece {
-    Bishop(Position a) {
+    public Bishop() {
+
+    }
+
+    public Bishop(Position a) {
         super(a);
     }
 

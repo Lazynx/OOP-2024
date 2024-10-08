@@ -20,12 +20,17 @@ public abstract class Person {
     public Person(String name, int age, Animal pet) {
         this(name, age);
         if (pet != null) {
-            this.pets.add(pet);
+            assignPet(pet);
         }
     }
 
     public void assignPet(Animal pet) {
-        this.pets.add(pet);
+        if (isPetsCompatible(pet)) {
+            this.pets.add(pet);
+            System.out.println(pet + " has been added to " + this.name + "'s pets.");
+        } else {
+            System.out.println("Error: " + pet + " cannot be added because " + (pet instanceof Dog ? "dogs" : "cats") + " can't live with incompatible pets!");
+        }
     }
 
     public void removePet(Animal pet) {
@@ -44,20 +49,57 @@ public abstract class Person {
         return this.name;
     }
 
+    public boolean isCatThere() {
+        for (Animal pet : this.pets) {
+            if (pet instanceof Cat) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isDogThere() {
+        for (Animal pet : this.pets) {
+            if (pet instanceof Dog) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isPetsCompatible(Animal pet) {
+        if ((pet instanceof Dog && this.isCatThere()) || (pet instanceof Cat && this.isDogThere())) {
+            System.out.println("Dogs can't live with cats, and cats can't live with dogs.");
+            return false;
+        }
+        return true;
+    }
+
     public void leavePetsWith(Person petTaker) {
         if (this.pets.isEmpty()) {
-            System.out.println(this.name + " has no pets for leaving.");
+            System.out.println(this.name + " has no pets to leave.");
             return;
         }
+        boolean isAdded = false;
         for (Animal pet : this.pets) {
             if (petTaker instanceof PhDStudent && pet instanceof Dog) {
-                System.out.println("PhD students can’t have high-maintenance pets like dogs.");
+                System.out.println("PhD students can’t take care of high-maintenance pets like dogs.");
+                continue;
+            }
+            if (!petTaker.isPetsCompatible(pet)) {
+                System.out.println(petTaker.getName() + " cannot take " + pet + " because of incompatible pets.");
                 continue;
             }
             petTaker.petsForKeeping.add(pet);
+            isAdded = true;
         }
-        this.pets.clear();
-        System.out.println(this.name + " has left their pets with " + petTaker.getName() + ".");
+        if (isAdded) {
+            this.pets.clear();
+            System.out.println(this.name + " has left their pets with " + petTaker.getName() + ".");
+        } else {
+            System.out.println("No pets were added cause they can't leave together!");
+        }
+
     }
 
     public void retrievePetsFrom(Person petTaker) {

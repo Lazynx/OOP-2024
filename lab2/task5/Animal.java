@@ -28,6 +28,7 @@ public abstract class Animal {
     public void setAge(int age) {
         this.age = age;
     }
+//    281
 
     @Override
     public boolean equals(Object o) {

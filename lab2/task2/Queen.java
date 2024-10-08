@@ -8,7 +8,8 @@ public class Queen extends Piece {
     @Override
     public boolean isLegalMove(Position b) {
         if (!b.canMove()) return false;
-        return (a.getX() == b.getX() || a.getY() == b.getY()) || (Math.abs(a.getX() - b.getX()) == Math.abs(a.getY() - b.getY()));
+        return new Bishop(a).isLegalMove(b) || new Rook(a).isLegalMove(b);
+//        return (a.getX() == b.getX() || a.getY() == b.getY()) || (Math.abs(a.getX() - b.getX()) == Math.abs(a.getY() - b.getY()));
     }
 
     @Override

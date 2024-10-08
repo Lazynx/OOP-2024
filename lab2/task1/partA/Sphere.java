@@ -32,6 +32,6 @@ public class Sphere extends Shape3D {
 
     @Override
     public String toString() {
-        return "Sphere [radius=" + radius + "]";
+        return "Sphere [radius=" + radius + "], " + super.toString();
     }
 }

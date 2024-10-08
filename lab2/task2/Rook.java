@@ -1,7 +1,13 @@
 package lab2.task2;
 
+import java.awt.*;
+
 public class Rook extends Piece {
-    Rook(Position a) {
+    public Rook() {
+
+    }
+
+    public Rook(Position a) {
         super(a);
     }
 

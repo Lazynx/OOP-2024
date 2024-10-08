@@ -31,6 +31,6 @@ public class Cube extends Shape3D {
 
     @Override
     public String toString() {
-        return "Cube [length=" + length + "]";
+        return "Cube [length=" + length + "], " + super.toString();
     }
 }

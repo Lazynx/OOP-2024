@@ -13,7 +13,7 @@ public class Parallel extends Circuit {
     public double getResistance() {
         double r1 = circuit1.getResistance();
         double r2 = circuit2.getResistance();
-        return (r1 * r2) / (r1 + r2);
+        return 1 / (1 / r1 + 1 / r2);
     }
 
     @Override
