@@ -43,13 +43,13 @@ public class BankCard {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BankCard bankCard = (BankCard) o;
-        return Objects.equals(cardNumber, bankCard.cardNumber);
+        BankCard that = (BankCard) o;
+        return balance == that.balance && Objects.equals(cardNumber, that.cardNumber) && Objects.equals(cardOwner, that.cardOwner);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cardNumber);
+        return Objects.hash(cardNumber, cardOwner, balance);
     }
 
     @Override

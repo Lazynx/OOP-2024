@@ -3,7 +3,9 @@ package lab2.task2;
 public abstract class Piece {
     Position a;
 
-    Piece(Position a) {
+    public Piece() {}
+
+    public Piece(Position a) {
         this.a = a;
     }
 

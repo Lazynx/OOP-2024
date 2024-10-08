@@ -14,7 +14,11 @@ public class Account {
     }
 
     public void withdraw(double sum) {
-        balance -= sum;
+        if (balance >= sum) {
+            balance -= sum;
+        } else {
+            System.out.println("You don't have enough funds!!!");
+        }
     }
 
     public double getBalance() {

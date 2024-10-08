@@ -23,8 +23,6 @@ public class CreditCard extends BankCard {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof CreditCard)) return false;
         if (!super.equals(obj)) return false;
         CreditCard that = (CreditCard) obj;
         return Objects.equals(creditSum, that.creditSum);
