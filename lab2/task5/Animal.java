@@ -1,5 +1,7 @@
 package lab2.task5;
 
+import java.util.Objects;
+
 public abstract class Animal {
     private String name;
     private int age;
@@ -25,6 +27,19 @@ public abstract class Animal {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (getClass() == o.getClass()) return false;
+        Animal that = (Animal) o;
+        return age == that.age && Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age);
     }
 
     @Override
