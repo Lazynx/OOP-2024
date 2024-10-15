@@ -99,7 +99,6 @@ public abstract class Person {
         } else {
             System.out.println("No pets were added cause they can't leave together!");
         }
-
     }
 
     public void retrievePetsFrom(Person petTaker) {
