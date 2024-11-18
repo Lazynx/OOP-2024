@@ -2,9 +2,11 @@ package lab2.task5;
 
 import java.util.Objects;
 
-public abstract class Animal {
+public abstract class Animal implements Moveable, Soundable {
     private String name;
     private int age;
+    private double distance;
+    private double speed;
 
     public Animal(String name, int age) {
         this.name = name;
@@ -28,7 +30,37 @@ public abstract class Animal {
     public void setAge(int age) {
         this.age = age;
     }
-//    281
+
+    @Override
+    public void makeSound() {
+        System.out.println("This animal made sound");
+    }
+
+    @Override
+    public void move(double time) {
+        this.distance = speed * time;
+    };
+
+    @Override
+    public double getDistance() {
+        return distance;
+    }
+
+    @Override
+    public void stop() {
+        speed = 0;
+        System.out.println("Animal " + name + " stopped, it went " + distance);
+    }
+
+    @Override
+    public double getSpeed() {
+        return speed;
+    }
+
+    @Override
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -46,5 +78,9 @@ public abstract class Animal {
     @Override
     public String toString() {
         return "Animal [name=" + name + ", age=" + age + "]";
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
     }
 }

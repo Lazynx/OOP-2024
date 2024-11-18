@@ -4,7 +4,7 @@ import java.util.Objects;
 import java.util.List;
 import java.util.ArrayList;
 
-public abstract class Person {
+public abstract class Person implements Comparable<Person>, Cloneable {
     private String name;
     private int age;
     private List<Animal> pets;
@@ -109,6 +109,16 @@ public abstract class Person {
         this.pets.addAll(petTaker.petsForKeeping);
         petTaker.petsForKeeping.clear();
         System.out.println(this.name + " has retrieved their pets from " + petTaker.getName() + ".");
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+    @Override
+    public int compareTo(Person person) {
+        return this.name.compareTo(person.name);
     }
 
     @Override

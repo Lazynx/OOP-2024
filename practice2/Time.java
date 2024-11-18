@@ -1,6 +1,6 @@
 package practice2;
 
-public class Time {
+public class Time implements Comparable<Time> {
     int hour;
     int minute;
     int second;
@@ -48,5 +48,18 @@ public class Time {
         if (this.hour > 24) {
             this.hour -= 24;
         }
+    }
+
+    @Override
+    public int compareTo(Time otherTime) {
+        int thisTotalSeconds = this.hour * 3600 + this.minute * 60 + this.second;
+        int otherTotalSeconds = otherTime.hour * 3600 + otherTime.minute * 60 + otherTime.second;
+
+        return Integer.compare(thisTotalSeconds, otherTotalSeconds);
+    }
+
+    @Override
+    public String toString() {
+        return hour + ":" + minute + ":" + second;
     }
 }
