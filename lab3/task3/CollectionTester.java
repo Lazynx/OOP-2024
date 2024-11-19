@@ -20,62 +20,75 @@ public class CollectionTester {
     }
 
     private static void testAllowDuplicate() {
-        AllowDuplicate allowDuplicate = new AllowDuplicate(new ArrayList<>());
+        MyCollection<String> allowDuplicate = new AllowDuplicate<>();
         allowDuplicate.insert("A");
         allowDuplicate.insert("B");
         allowDuplicate.insert("C");
-        allowDuplicate.print();
+        allowDuplicate.insert("A"); // Дубликат
+
+        System.out.println("Items after insertion:");
+        allowDuplicate.printAll();
 
         System.out.println("Size: " + allowDuplicate.size());
         allowDuplicate.remove("A");
-        allowDuplicate.print();
+        System.out.println("Items after removing 'A':");
+        allowDuplicate.printAll();
 
         allowDuplicate.clear();
-        System.out.println("Is Empty: " + allowDuplicate.isEmpty());
+        System.out.println("Is Empty after clear? " + allowDuplicate.isEmpty());
     }
 
     private static void testNotAllowDuplicate() {
-        NotAllowDuplicate notAllowDuplicate = new NotAllowDuplicate(new HashSet<>());
+        MyCollection<String> notAllowDuplicate = new NotAllowDuplicate<>();
         notAllowDuplicate.insert("A");
         notAllowDuplicate.insert("B");
-        notAllowDuplicate.insert("A");
-        notAllowDuplicate.print();
+        notAllowDuplicate.insert("A"); // Дубликат (не добавится)
+
+        System.out.println("Items after insertion:");
+        notAllowDuplicate.printAll();
 
         System.out.println("Size: " + notAllowDuplicate.size());
         notAllowDuplicate.remove("A");
-        notAllowDuplicate.print();
+        System.out.println("Items after removing 'A':");
+        notAllowDuplicate.printAll();
 
         notAllowDuplicate.clear();
-        System.out.println("Is Empty: " + notAllowDuplicate.isEmpty());
+        System.out.println("Is Empty after clear? " + notAllowDuplicate.isEmpty());
     }
 
     private static void testOrdered() {
-        Ordered ordered = new Ordered(new TreeSet<>());
+        MyCollection<String> ordered = new Ordered<>();
         ordered.insert("B");
         ordered.insert("A");
         ordered.insert("C");
-        ordered.print();
+
+        System.out.println("Items after insertion (should be sorted):");
+        ordered.printAll();
 
         System.out.println("Size: " + ordered.size());
         ordered.remove("B");
-        ordered.print();
+        System.out.println("Items after removing 'B':");
+        ordered.printAll();
 
         ordered.clear();
-        System.out.println("Is Empty: " + ordered.isEmpty());
+        System.out.println("Is Empty after clear? " + ordered.isEmpty());
     }
 
     private static void testUnOrdered() {
-        UnOrdered unOrdered = new UnOrdered(new ArrayList<>());
+        MyCollection<String> unOrdered = new UnOrdered<>();
         unOrdered.insert("B");
         unOrdered.insert("A");
         unOrdered.insert("C");
-        unOrdered.print();
+
+        System.out.println("Items after insertion:");
+        unOrdered.printAll();
 
         System.out.println("Size: " + unOrdered.size());
         unOrdered.remove("A");
-        unOrdered.print();
+        System.out.println("Items after removing 'A':");
+        unOrdered.printAll();
 
         unOrdered.clear();
-        System.out.println("Is Empty: " + unOrdered.isEmpty());
+        System.out.println("Is Empty after clear? " + unOrdered.isEmpty());
     }
 }

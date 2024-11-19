@@ -1,23 +1,24 @@
 package lab3.task3;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class AllowDuplicate implements MyCollection {
-    private ArrayList<Object> collections = new ArrayList<>();
+public class AllowDuplicate<T> implements MyCollection<T> {
+    private ArrayList<T> collections = new ArrayList<>();
 
     public AllowDuplicate() {}
 
-    public AllowDuplicate(ArrayList<Object> collections) {
+    public AllowDuplicate(ArrayList<T> collections) {
         this.collections = collections;
     }
 
     @Override
-    public void insert(Object o) {
+    public void insert(T o) {
         collections.add(o);
     }
 
     @Override
-    public void remove(Object o) {
+    public void remove(T o) {
         collections.remove(o);
     }
 
@@ -37,10 +38,15 @@ public class AllowDuplicate implements MyCollection {
     }
 
     @Override
-    public void print() {
-        for (Object o : collections) {
-            System.out.println(o);
+    public void printAll() {
+        for (T t : collections) {
+            System.out.println(t);
         }
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return collections.iterator();
     }
 
     @Override

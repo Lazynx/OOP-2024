@@ -1,23 +1,24 @@
 package lab3.task3;
 
 import java.util.HashSet;
+import java.util.Iterator;
 
-public class NotAllowDuplicate implements MyCollection {
-    private HashSet<Object> collections = new HashSet<>();
+public class NotAllowDuplicate<T> implements MyCollection<T> {
+    private HashSet<T> collections = new HashSet<>();
 
     public NotAllowDuplicate() {}
 
-    public NotAllowDuplicate(HashSet<Object> collections) {
+    public NotAllowDuplicate(HashSet<T> collections) {
         this.collections = collections;
     }
 
     @Override
-    public void insert(Object o) {
+    public void insert(T o) {
         collections.add(o);
     }
 
     @Override
-    public void remove(Object o) {
+    public void remove(T o) {
         collections.remove(o);
     }
 
@@ -37,10 +38,15 @@ public class NotAllowDuplicate implements MyCollection {
     }
 
     @Override
-    public void print() {
-        for (Object o : collections) {
+    public void printAll() {
+        for (T o : collections) {
             System.out.println(o);
         }
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return collections.iterator();
     }
 
     @Override

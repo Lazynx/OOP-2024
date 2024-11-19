@@ -1,23 +1,24 @@
 package lab3.task3;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class UnOrdered implements MyCollection {
-    private ArrayList<Object> collections = new ArrayList<>();
+public class UnOrdered<T> implements MyCollection<T> {
+    private ArrayList<T> collections = new ArrayList<>();
 
     public UnOrdered() {}
 
-    public UnOrdered(ArrayList<Object> collections) {
+    public UnOrdered(ArrayList<T> collections) {
         this.collections = collections;
     }
 
     @Override
-    public void insert(Object o) {
+    public void insert(T o) {
         collections.add(o);
     }
 
     @Override
-    public void remove(Object o) {
+    public void remove(T o) {
         collections.remove(o);
     }
 
@@ -37,10 +38,15 @@ public class UnOrdered implements MyCollection {
     }
 
     @Override
-    public void print() {
-        for (Object o : collections) {
+    public void printAll() {
+        for (T o : collections) {
             System.out.println(o);
         }
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return collections.iterator();
     }
 
     @Override
